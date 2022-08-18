@@ -9,7 +9,7 @@
     ATarget::~ATarget(){
     }
 
-    const std::string   ATarget::getType() const{
+    const std::string&   ATarget::getType() const{
         return this->type;
     }
 

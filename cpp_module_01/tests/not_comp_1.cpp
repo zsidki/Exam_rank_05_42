@@ -1,4 +1,3 @@
-
 #include "../ATarget.hpp"
 
 int main(void)

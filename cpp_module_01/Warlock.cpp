@@ -14,11 +14,11 @@ void                Warlock::setTitle(const std::string& title){
     this->title = title;
 }
 
-const std::string   Warlock::getName() const{
+const std::string&   Warlock::getName() const{
     return this->name;
 }
 
-const std::string   Warlock::getTitle() const{
+const std::string&   Warlock::getTitle() const{
     return this->title;
 }
 
@@ -30,13 +30,24 @@ void                Warlock::learnSpell(ASpell *spell){
     for(size_t i = 0; this->spells.size(); i++)
         if(this->spells[i]->getName() == spell->getName())
             return;
-    spells.push_back(spell->clone());
+        spells.push_back(spell->clone());
 }
 
-void                Warlock::forgetSpell(const std::string ){
-
+void                Warlock::forgetSpell(const std::string &name ){
+    for(size_t i = 0; this->spells.size(); i++)
+    {
+        if(this->spells[i]->getName() == name )
+        {
+            this->spells.clear();
+            return;
+        }
+    }
 }
-
-void				Warlock::launchSpell(const std::string, const Atarget& ){
+void				Warlock::launchSpell(const std::string &name , const ATarget& target){
+    for(size_t i = 0; this->spells.size(); i++)
+    {
+        if(this->spells[i]->getName() == name )
+            return this-> spells[i]->launch(target);
+    }
     
 }

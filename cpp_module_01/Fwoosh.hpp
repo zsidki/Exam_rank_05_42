@@ -7,20 +7,10 @@
 
 class Fwoosh : public ASpell
 {
-    private:
-        std::string fwooshed;
-
-        Fwoosh();
-        Fwoosh( const Fwoosh&);
-
     public:
-        Fwoosh(const std::string &fwooshed);
-        ~Fwoosh();
-        Fwoosh& operator=(const Fwoosh&);
-
-        const std::string   getFwooshed() const;
+        Fwoosh();
+        virtual ~Fwoosh();
         virtual Fwoosh*       clone() const;
-
 
 };
 
