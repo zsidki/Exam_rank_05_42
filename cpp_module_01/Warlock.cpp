@@ -28,7 +28,7 @@ void                Warlock::introduce() const{
 
 void                Warlock::learnSpell(ASpell *spell){
     for(size_t i = 0; this->spells.size(); i++)
-        if(this->spells[i]->getName() == spell->getName())
+        if(this->spells[i] && this->spells[i]->getName() == spell->getName())
             return;
         spells.push_back(spell->clone());
 }
@@ -36,9 +36,9 @@ void                Warlock::learnSpell(ASpell *spell){
 void                Warlock::forgetSpell(const std::string &name ){
     for(size_t i = 0; this->spells.size(); i++)
     {
-        if(this->spells[i]->getName() == name )
+        if(this->spells[i] && this->spells[i]->getName() == name )
         {
-            this->spells.clear();
+            this->spells[i] = NULL;
             return;
         }
     }
@@ -46,7 +46,7 @@ void                Warlock::forgetSpell(const std::string &name ){
 void				Warlock::launchSpell(const std::string &name , const ATarget& target){
     for(size_t i = 0; this->spells.size(); i++)
     {
-        if(this->spells[i]->getName() == name )
+        if(this->spells[i] && this->spells[i]->getName() == name )
             return this-> spells[i]->launch(target);
     }
     
