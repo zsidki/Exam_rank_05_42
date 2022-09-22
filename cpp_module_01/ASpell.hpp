@@ -7,23 +7,24 @@
 
 class ATarget;
 class ASpell{
-    public :
+    protected:
         std::string name;
         std::string effects;
 
+    public :
         ASpell();
-        // ASpell( const ASpell&);
-    public:
-        ASpell(const std::string &name, const std::string &effects);
-        ~ASpell();
-        ASpell& operator=(const ASpell&);
+        ASpell(const std::string& name, const std::string & effects );
+        virtual ~ASpell();
 
-        const std::string&  getName() const;
-        const std::string&   getEffects() const;
-        virtual ASpell*       clone() const = 0;
+        const   std::string getName() const;
+        const   std::string getEffects() const;
+        
 
-        void    launch(const ATarget& atarget) const;
+        virtual ASpell*     clone() const = 0;
+        void    launch(const ATarget& target) const;
+
 
 };
+
 
 #endif

@@ -13,7 +13,7 @@ Warlock::~Warlock(){
 void                Warlock::setTitle(const std::string& title){
     this->title = title;
 }
-
+ 
 const std::string&   Warlock::getName() const{
     return this->name;
 }
@@ -23,31 +23,32 @@ const std::string&   Warlock::getTitle() const{
 }
 
 void                Warlock::introduce() const{
-    std::cout<< this->name <<": I am "<< this->name <<", "<< this->title <<" !" <<std::endl;
+    std::cout<< this->name <<": I am "<< this->name <<", "<< this->title <<"!" <<std::endl;
 }
 
 void                Warlock::learnSpell(ASpell *spell){
-    for(size_t i = 0; this->spells.size(); i++)
+    for(size_t i = 0; i< this->spells.size(); i++)
         if(this->spells[i]->getName() == spell->getName())
             return;
-        spells.push_back(spell->clone());
+    spells.push_back(spell->clone());
 }
 
-void                Warlock::forgetSpell(const std::string &name ){
-    for(size_t i = 0; this->spells.size(); i++)
-    {
-        if(this->spells[i]->getName() == name )
+
+void                Warlock::forgetSpell(std::string name){
+    for(size_t i = 0; i< this->spells.size(); i++)
+        if(this->spells[i] && this->spells[i]->getName() == name )
         {
-            this->spells.clear();
+             this->spells[i] = NULL;
             return;
         }
-    }
+        return;
+
 }
-void				Warlock::launchSpell(const std::string &name , const ATarget& target){
-    for(size_t i = 0; this->spells.size(); i++)
-    {
-        if(this->spells[i]->getName() == name )
-            return this-> spells[i]->launch(target);
-    }
-    
+
+void				Warlock::launchSpell(std::string name, const ATarget& target)
+{
+    for(size_t i = 0; i< this->spells.size(); i++)
+        if(this->spells[i] && this->spells[i]->getName() == name)
+            return this->spells[i]->launch(target);
+
 }
