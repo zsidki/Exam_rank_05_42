@@ -27,22 +27,23 @@ void                Warlock::introduce() const{
 }
 
 void                Warlock::learnSpell(ASpell *spell){
-    for(size_t i = 0; i< this->spells.size(); i++)
-        if(this->spells[i]->getName() == spell->getName())
+    for(size_t i = 0; this->spells.size(); i++)
+        if(this->spells[i] && this->spells[i]->getName() == spell->getName())
             return;
     spells.push_back(spell->clone());
 }
 
 
-void                Warlock::forgetSpell(std::string name){
-    for(size_t i = 0; i< this->spells.size(); i++)
+void                Warlock::forgetSpell(std::string name ){
+    for(size_t i = 0; this->spells.size(); i++)
+    {
         if(this->spells[i] && this->spells[i]->getName() == name )
         {
-             this->spells[i] = NULL;
+            this->spells[i] = NULL;
             return;
         }
         return;
-
+    }
 }
 
 void				Warlock::launchSpell(std::string name, const ATarget& target)
